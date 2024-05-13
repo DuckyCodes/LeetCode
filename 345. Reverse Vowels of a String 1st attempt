@@ -37,3 +37,23 @@ int main()
   string s = "hello";
   cout<<reverseVowels(s);
 }
+
+/*
+Intuition:
+    The goal of this problem is to reverse the order of the vowels in the word while keeping the non-vowels in place "hello" -> "holle"
+To do this problem we can have a loop to check all the vowels in the word, then reverse those vowels in order.
+
+Approach:
+1. store the vowels into a certain place
+2. have a loop to check the word for vowels, then store the vowels into a string
+3. have another loop to check the same word for vowels and reverse the vowels using the string 
+
+Complexity:
+
+    Time complexity:
+        The time complexity is O(n^2), where n is the length of the word. 
+
+    Space complexity:
+        The space complexity is O(n), where n is the length of the word.
+
+*/
