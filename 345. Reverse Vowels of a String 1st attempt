@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string reverseVowels(string s) {
+    string vowels = "aeiouAEIOU";
+    string reverseV = "";
+    int pos = 0;
+    while(pos < s.length()) {//grab all vowels in the word into a new string
+        for ( int i = 0; i < vowels.length(); i++) {
+            if(s[pos] == vowels[i]) {
+                reverseV += s[pos];
+            }
+        }
+        pos++;
+    }
+    
+    
+    pos = 0;
+    int reversePos = reverseV.length()-1;
+    //reverse the vowels
+    while(pos < s.length()){
+        for(int i = 0; i < vowels.length(); i++) {
+            if (s[pos] == vowels[i]) {
+                s[pos] = reverseV[reversePos];
+                reversePos--;
+                break;
+            }
+        }
+        pos++;
+    }
+    return s;
+}
+
+int main()
+{
+  string s = "hello";
+  cout<<reverseVowels(s);
+}
