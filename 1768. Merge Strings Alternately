@@ -1,0 +1,42 @@
+class Solution {
+public:
+    string mergeAlternately(string word1, string word2) {
+        string word;
+        int numCount = 0;
+        int word1Length = word1.length();
+        int word2Length = word2.length();
+        int maxLength;
+        int minLength;
+
+        if (word1Length >= word2Length) { //check maxLength of each word
+            maxLength = word1Length;
+            minLength = word2Length;
+        }
+        else {
+            minLength = word1Length;
+            maxLength = word2Length;
+        }
+
+        word.resize(maxLength + minLength);
+
+        for (int i = 0; i < minLength; i++) {
+            word[numCount] = word1[i];
+            numCount++;
+            word[numCount] = word2[i];
+            numCount++;
+        }//working
+
+
+        if (word1Length > word2Length) {
+            for (int i = minLength; i < maxLength; i++) {
+                word[numCount++] = word1[i];
+            }
+        }
+        else if (word1Length < word2Length) {
+            for (int i = minLength; i < maxLength; i++) {
+                word[numCount++] = word2[i];
+            }
+        }
+        return word;
+    }
+};
