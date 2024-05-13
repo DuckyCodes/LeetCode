@@ -40,3 +40,24 @@ public:
         return word;
     }
 };
+/*
+Intuition:
+    The goal of this problem to merge two words while alternating each letter into one word such as "abe" and "prw" -> "apbrwe"
+and when one of the words are done filling up the word with the longer length fills in the rest("abc" and "ppppp" -> "apbpcppp").
+To do this problem we can use a loop to alternate each letter in each word to make a new word.
+
+Approach:
+1. check which word has the maximum length
+2. have a new string that can encompass both word1 and word2 that merges
+3. merge them using a for loop that merges them together till the word with the minium length ends
+4. fill the rest with the word with maximum length
+
+Complexity:
+
+    Time complexity:
+        The time complexity is O(n), where n is the length of the minium length.
+
+    Space complexity:
+        The spacee complexity is O(n), where n is the length of the maximum length
+
+*/
