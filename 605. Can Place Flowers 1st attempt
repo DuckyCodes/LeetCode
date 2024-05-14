@@ -1,0 +1,45 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+bool canPlaceFlowers(vector<int>& flowerbed, int n) {
+    int pos = 0;
+    int bedSize = flowerbed.size();
+    while(pos < bedSize) {
+        if ((pos == 0 || flowerbed.at(pos - 1) == 0) && flowerbed.at(pos) == 0 &&
+            (pos == bedSize - 1 || flowerbed.at(pos + 1) == 0)) { //edge cases
+            n--;
+            pos += 2;
+        } else {
+            pos++;
+        }
+    }
+    return (n <= 0);
+}
+
+int main() {
+    vector<int> flowerbed = { 1,0,0,0,1 }; //true
+    cout << canPlaceFlowers(flowerbed, 1) << endl;
+    
+    flowerbed = { 1,0,0,0,1 };//false
+    cout << canPlaceFlowers(flowerbed, 2) << endl;
+    
+    flowerbed = { 1,0,0,0,0,0,1 };//true
+    cout << canPlaceFlowers(flowerbed, 2) << endl;
+    
+    flowerbed = {1,0,0,0,0,1};// false
+    cout << canPlaceFlowers(flowerbed, 2) << endl;
+    
+    flowerbed = {0,1,0};// false
+    cout << canPlaceFlowers(flowerbed, 1) << endl;
+
+    
+    return 0;
+}
+/*
+Intuition:
+
+Approach:
+
+Complexity:
+*/
