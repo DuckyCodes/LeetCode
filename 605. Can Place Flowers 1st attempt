@@ -38,8 +38,22 @@ int main() {
 }
 /*
 Intuition:
+    The goal of this problem is to see whether if we can fit n amount of plant in a bed of flowers, while without allowing any adjacent plants to be planted.
+An example can be {1,0,0,0,1} where only one plant can be planted, so if n = 1 this example will be correct whereas if n = 2 this example will be incorrect.
+There are only a few places where a plant can be planted, if the beginning is {0,0} then we can plant one at the very front of the flowerbed{1,0}. 
+If anywhere in the middle of the flowerbed is {0,0,0}, then you can plant one plant in the middle of the triple zeros{0,1,0}.
+If the end of the flowerbed is {0,0}, then you can plant one at the very end{0,1}. Using this information we can to do this problem, 
+by having a loop that checks if a plant can be planted if so minus n.
 
 Approach:
+    1. Have a loop that goes through the entire flowerbed
+    2. Use an If statement to check all the edge cases for where a plant can be planted
+    3. If planted move to the next unoccupy pot, otherwise check the next pot
+    4. return whether if we used all the plants
 
 Complexity:
+    Time Complexity:
+        O(n) where n is the size of the flower pot.
+    Space Complexity:
+        O(1), as we only use a constant amount of extra space for variables regardless of the size of the input.
 */
