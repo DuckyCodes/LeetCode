@@ -20,7 +20,8 @@ public:
 
 /*
 Intuition:
-  The goal of this problem is to 
+  The goal of this problem is to determine if giving the extra candies to each kid would make them have
+the greatest number of candies among all the kids. 
 
 Approach:
 
