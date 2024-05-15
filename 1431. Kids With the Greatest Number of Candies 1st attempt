@@ -21,10 +21,15 @@ public:
 /*
 Intuition:
   The goal of this problem is to determine if giving the extra candies to each kid would make them have
-the greatest number of candies among all the kids. 
+the greatest number of candies among all the kids. An example of such is you are given an array with the
+amount of candy each kid has [2,3,5,1,3] with extra candies 3. It should return [true, true, true, false, true].
+To do this problem we can have a loop to get the kid with the largest amount of candy, then use another loop 
+to add the extra candy to each kid to see if its  equal or greater then the previous kid with the largest amount of candy.
 
 Approach:
-
+    1. Use a loop to find the maximum number of candies among all the kids. 
+    2. Iterate through the array, check if giving each kid would result them having more candies than or equal to the maximum number of candies
+    3. Store the results indicating whether each kid can have the greatest number of candies after receiving extra candies
 
 Complexity:
   Time Complexity: 
