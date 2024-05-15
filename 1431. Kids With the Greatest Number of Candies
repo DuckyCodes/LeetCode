@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+        int max = 0;
+        vector<bool> greatest;
+        int good;
+        for(unsigned int i = 0; i < candies.size(); i++ ) {
+            if(candies.at(i) > max)
+                max = candies.at(i);
+        }
+        for(unsigned int i = 0; i < candies.size(); i++ ) {
+                if(max <= candies.at(i) + extraCandies)
+                    greatest.push_back(true);
+                else
+                    greatest.push_back(false);
+        }
+        return greatest;
+    }
+};
+
+/*
+Intuition:
+  The goal of this problem is to 
+
+Approach:
+
+
+Complexity:
+  Time Complexity: 
+    O(n) where n is the size of candy
+  Space Complexity:
+    O(n) where n is the size of the candy 
+*/
