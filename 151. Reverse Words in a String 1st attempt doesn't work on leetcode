@@ -12,7 +12,7 @@ string reverseWords(string s) {
             if (s[i] == ' ') {
                 continue;
             }
-            while (s[i] != ' ' && i >= 0) { // separates each word
+            while (i >= 0 && s[i] != ' ') { // separates each word
                 tempWordR += s[i];
                 i--;
             }
@@ -50,10 +50,17 @@ int main()
 /*
 Intuition:
         The goal of this problem is to reverse the order of the words in a sentence. For example "Hello World" -> "World Hello"
-To do this problem, we need to store a word in a temperate 
+To do this problem, we need to store a word in a temporary array, then postition that word to the front of the string. 
         
 Approach:
+        1. Have a for loop that goes through each character in the array
+        2. Find a word to put into the temporary string
+        3. Add that string to the new sentence
 
 Complexity
+        Time Complexity:
+                O(n) where n is the size of the sentence, since the for loop iterates through each character and the nested loops inside won't multiply. 
+        Space Complexity:
+                O(n) where n is the size of the sentence.
 
 */
