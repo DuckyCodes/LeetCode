@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int firstPointer = 0;
+        int secPointer = 0;
+        int sizeS = s.length();
+        int sizeT = t.length();
+        while(firstPointer < sizeS) {
+            while(secPointer < sizeT) {
+                if(t[secPointer] == s[firstPointer]) {
+                    break;   
+                } else {
+                 secPointer++;   
+                }
+            }
+            if(secPointer >= sizeT) 
+                    return false;
+            firstPointer++;
+            secPointer++;
+        }
+        
+        return true;
+        
+}
+};
