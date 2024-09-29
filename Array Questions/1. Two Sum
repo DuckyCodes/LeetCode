@@ -1,0 +1,40 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        i=0
+        while i<len(nums)-1:
+            j=i+1
+            while j<len(nums):
+                if nums[i]+nums[j] == target:
+                    return [i,j]
+                j+=1
+            i+=1
+
+Intuition
+    The goal of the twoSum function is to find two distinct indices i and j 
+    in the list nums such that the sum of the elements at these indices equals the given target.
+
+    The approach here is a brute-force solution, where for each element nums[i], 
+    the function checks all subsequent elements nums[j] to see if their sum equals the target. 
+    Once a match is found, the indices [i, j] are returned.
+
+Approach
+    Use a nested loop:
+    The outer loop iterates through each index i in nums.
+    The inner loop starts from i + 1 and checks every subsequent element nums[j] to see if nums[i] + nums[j] == target.
+    If such a pair is found, the function immediately returns the indices [i, j].
+    If no pair is found by the end of the loop, the function implicitly returns None (though the problem guarantees that a solution exists).
+
+Time complexity:
+The time complexity is O(n^2), where n is the number of elements in nums. 
+This is because for each element i, the function compares it to every other subsequent element j in the list, 
+resulting in a quadratic number of comparisons.
+
+Space complexity:
+The space complexity is 
+O(1), as the function only uses a few integer variables (i, j) to track the indices, 
+and the space used does not grow with the size of the input list.

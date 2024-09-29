@@ -1,0 +1,60 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy  =  ListNode()
+        curr = dummy
+        carry = 0
+
+        while l1 or l2 or carry:
+            v1 = l1.val if l1 else 0
+            v2 = l2.val if l2 else 0
+
+            val = v1 + v2 + carry
+            carry = val // 10
+            val = val % 10
+
+            curr.next = ListNode(val)
+
+            curr = curr.next
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+        
+        return dummy.next
+
+        
+Intuition
+    The problem involves adding two numbers represented by two linked lists, where each node contains a single digit, and the digits are stored in reverse order. The task is to return the sum of these two numbers as a linked list, also in reverse order.
+
+    This is similar to performing digit-by-digit addition as we would by hand, starting from the least significant digit, and keeping track of any carry-over to the next digit.
+
+Approach
+    Initialize variables:
+
+    dummy: A dummy node to help build the result list.
+    curr: A pointer to build the result linked list starting from the dummy node.
+    carry: To store any carry-over value during addition (initially set to 0).
+    Iterate through both linked lists:
+
+    At each step, add the values of the current nodes of l1 and l2 (or 0 if one list is shorter than the other), along with any carry from the previous step.
+    Compute the new value for the current digit using val = (v1 + v2 + carry) % 10.
+    Update the carry for the next iteration using carry = (v1 + v2 + carry) // 10.
+    Move to the next nodes in both l1 and l2. If either list is shorter, treat its value as 0.
+
+    Handle any remaining carry:
+
+    After the loop, if there is any remaining carry (i.e., carry != 0), append a new node with the value of the carry.
+    Return the result:
+
+    The result is stored starting from dummy.next, as dummy itself is a placeholder.
+
+Time complexity: 
+O(max(m,n)), where m and n are the lengths of the two input linked lists l1 and l2.
+ We iterate through both lists once, digit by digit.
+
+Space complexity: 
+O(max(m,n)), since we create a new linked list to store the result, 
+and the size of this list is proportional to the length of the longer input list plus one extra node for the carry (if necessary).
