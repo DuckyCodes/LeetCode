@@ -1,0 +1,11 @@
+class Solution:
+    def minElement(self, nums: List[int]) -> int:
+        sumT = 0
+        minN = nums[0]
+        for x in nums:
+            while  x != 0:
+                sumT = sumT + (x % 10)
+                x = x // 10
+            minN = min(minN, sumT)
+            sumT = 0
+        return minN
