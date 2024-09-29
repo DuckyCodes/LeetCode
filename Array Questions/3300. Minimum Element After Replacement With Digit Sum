@@ -9,3 +9,31 @@ class Solution:
             minN = min(minN, sumT)
             sumT = 0
         return minN
+
+Intuition
+
+The function is designed to find the number in the list `nums` that has the smallest **sum of digits**. Here's the process:
+
+1. For each number in `nums`, the function calculates the sum of its digits.
+2. It keeps track of the smallest sum of digits encountered so far.
+3. For each number, the sum of its digits is calculated by repeatedly taking the remainder when divided by 10 (to get the last digit) and adding it to a sum accumulator (`sumT`), then dividing the number by 10 to remove the last digit.
+4. Once the sum of digits is computed for a number, the function compares it to the current minimum (`minN`) and updates the minimum if necessary.
+5. At the end, the function returns the number with the smallest sum of digits.
+
+Time Complexity
+Let n be the number of elements in nums.
+Let d be the maximum number of digits in any element of nums.
+For each number in nums, the time complexity for calculating the sum of digits is proportional to the number of digits in the number. So, for all n numbers:
+
+Time complexity:
+The time complexity is 
+O(n⋅d), where:
+n is the number of elements in nums.
+d is the average number of digits in the numbers.
+This is because each number requires time proportional to its digit length to sum the digits.
+
+Space Complexity
+
+The space complexity is 
+O(1), as the algorithm uses only a few integer variables (sumT, minN) to track intermediate sums and comparisons,
+and does not require any additional data structures that grow with the input size. Thus, the space complexity is constant regardless of the size of the input list.
