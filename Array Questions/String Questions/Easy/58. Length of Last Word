@@ -1,0 +1,32 @@
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        j = 0
+        for i in range(len(s)-1,-1,-1):
+            if s[i] != " ":
+                break
+           
+        while i>= 0 and s[i] != " ":
+            j += 1
+            i-=1
+        return j
+
+Intuition
+The goal of this function is to find the length of the last word in a given string s. The string may have trailing spaces, so the function needs to ignore those before calculating the last word's length.
+
+Starting from the end: We loop backwards from the end of the string, skipping any trailing spaces until we find the first character of the last word.
+Count the word length: Once we reach the last word, we count the number of characters until we encounter a space (or reach the beginning of the string).
+Return the result: The result is the length of the last word.
+
+Approach
+Skip trailing spaces: Start a loop from the end of the string, moving backward until you find a non-space character, indicating the start of the last word.
+Count the length of the last word: Keep moving backward and count the characters in the last word until you encounter a space or reach the start of the string.
+
+Return the length: Return the count of characters as the length of the last word.
+Time Complexity
+O(n), where n is the length of the string s. 
+The loop moves from the end to the beginning of the string, and in the worst case, we traverse the entire string (skipping trailing spaces and counting the last word).
+
+Space Complexity
+
+O(1). The space complexity is constant because we only use a few integer variables (i and j) to keep track of the current index and the length of the last word.
+No additional data structures are used.
