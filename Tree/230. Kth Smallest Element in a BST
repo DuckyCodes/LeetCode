@@ -1,0 +1,46 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        n = 0
+        stack = []
+        cur = root 
+
+        while cur or stack:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+            cur = stack.pop()
+            n += 1
+            if n == k:
+                return cur.val
+            cur = cur.right
+
+
+Intuition
+    The function checks whether two binary trees, p and q, are identical. Two trees are considered the same if they:
+  
+    Have the same structure (i.e., corresponding nodes exist in both trees).
+    Contain the same values in all corresponding nodes.
+  Base Cases:
+    If both nodes are None, they are the same.
+    If only one of the nodes is None, they are different.
+  Recursive Check:
+    If both nodes are not None, compare the values of the current nodes (p.val == q.val).
+    Recursively check the left and right subtrees to ensure both trees have the same structure and values.
+Approach
+  Base Case 1: If both p and q are None, return True because two empty trees are identical.
+  Base Case 2: If only one of p or q is None, return False because one tree is missing a node that the other tree has.
+  Recursive Step: If both p and q are not None, check:
+  Whether their values are the same (p.val == q.val).
+  Recursively check if their left subtrees are the same (self.isSameTree(p.left, q.left)).
+  Recursively check if their right subtrees are the same (self.isSameTree(p.right, q.right)).
+  Return: The result of the comparison will be True only if the current node values match and both the left and right subtrees are identical.
+Time Complexity
+O(n), where n is the number of nodes in the smaller tree. The function checks every corresponding node in both trees.
+Space Complexity
+O(h), where h is the height of the tree. This is the space required by the recursive call stack. In the worst case, where the tree is highly unbalanced, the space complexity is O(n). However, in a balanced tree, it's O(log n).
