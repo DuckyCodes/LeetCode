@@ -1,0 +1,54 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        if not preorder or not inorder:
+            return None
+        
+        root = TreeNode(preorder[0])
+        mid = inorder.index(preorder[0])
+
+        root.left = self.buildTree(preorder[1: mid + 1], inorder[:mid])
+        root.right = self.buildTree(preorder[mid+1:], inorder[mid+1 :])
+
+        return root
+
+
+Intuition
+  The function constructs a binary tree from its preorder and inorder traversal lists. The process is based on the properties of these traversals:
+  
+  The first element of the preorder list represents the root of the tree.
+  The inorder list allows us to identify the left and right subtrees based on the root's position.
+
+Approach
+Base Case:
+
+  If either preorder or inorder is empty, return None. This means there are no nodes to construct, indicating that we have reached the end of a branch.
+  Create the Root Node:
+
+  The first element in the preorder list is extracted and used to create the root node of the tree.
+  Find the Root Index:
+
+  Locate the index of the root node in the inorder list. This index helps to determine the elements belonging to the left and right subtrees:
+  Elements to the left of this index in the inorder list will form the left subtree.
+  Elements to the right will form the right subtree.
+  Recursively Build Left and Right Subtrees:
+
+  For the left subtree:
+  Slice the preorder list to get the elements corresponding to the left subtree (from index 1 to mid + 1).
+  Use the elements from the inorder list that are to the left of the root index.
+  For the right subtree:
+  Slice the preorder list from mid + 1 to the end.
+  Use the elements from the inorder list that are to the right of the root index.
+  Return the Root Node:
+
+After constructing the left and right subtrees, return the root node, which now has its left and right children properly assigned.
+Time Complexity
+  However, since each call involves an O(n) operation to find the root index, 
+  this leads to a total complexity of O(n^2) in the worst case.
+Space Complexity
+  O(h), where h is the height of the tree. This accounts for the recursive call stack.
