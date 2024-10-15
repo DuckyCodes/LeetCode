@@ -1,0 +1,38 @@
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        stones = [-s for s in stones]
+        heapq.heapify(stones)
+        while len(stones) > 1:
+            first = heapq.heappop(stones)
+            second = heapq.heappop(stones)
+            if second > first:
+                heapq.heappush(stones, first - second)
+
+        stones.append(0)
+        return abs(stones[0])
+
+
+
+Intuition
+    The goal of this function is to determine the weight of the last remaining stone after repeatedly smashing the two heaviest stones together. If two stones have the same weight, they both are destroyed; otherwise, the lighter stone is destroyed, and the heavier stone is reduced by the weight of the lighter stone.
+
+Approach
+    Negate the Stone Weights:
+
+    The function starts by negating the weights of the stones. This is done because Python's heapq implements a min-heap by default. By negating the values, we can simulate a max-heap.
+    Heapify:
+
+    The heapq.heapify(stones) function transforms the list of stones into a heap, allowing efficient retrieval of the smallest element (in this case, the largest stone due to the negation).
+    Main Loop:
+
+    While there are at least two stones in the heap:
+    The two heaviest stones are removed from the heap (the smallest values in the negated form).
+    If the second stone is heavier than the first, the weight difference is pushed back into the heap (negated again).
+    Final Stone:
+
+    If there’s one stone left in the heap, its negated value represents the weight of that stone. If no stones are left, the result is 0.
+
+Time Complexity
+    O(n log n): Where n is the number of stones. The heap operations (insertion and deletion) are logarithmic in relation to the number of elements in the heap.
+Space Complexity
+    O(n): For storing the negated stones in the heap.
