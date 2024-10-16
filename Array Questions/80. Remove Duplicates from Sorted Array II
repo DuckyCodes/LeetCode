@@ -15,5 +15,37 @@ class Solution:
         return count
 
 
+Intuition:
+    The goal of the removeDuplicates function is to modify the list nums in-place to remove excess duplicate entries such that each element appears at most twice. It returns the new length of the modified list after duplicates have been removed.
+    
+    The idea is to allow a maximum of two occurrences of any element in the list.
+    If an element appears more than twice, the extra occurrences should be removed from the list.
+    Approach:
 
+Initialization:
+
+    count: This variable keeps track of the position in the list where the next valid element should be placed. It also represents the length of the modified list without excess duplicates.
+    dup: This variable counts the number of consecutive occurrences of the current element.
+    Iterate through the list:
+    
+    The loop starts from the first element and goes through each element in nums.
+    If the current element nums[i] is the same as the previous element (nums[i-1]), increment the dup count. This keeps track of the number of consecutive duplicates.
+    If the current element is different from the previous one, reset dup to 1 (since it's the first occurrence of a new element).
+    Update the list:
+    
+    If dup is less than or equal to 2, copy the current element nums[i] to the position indicated by count, and increment count. This ensures that each element appears at most twice in the modified list.
+    Return the result:
+    
+    After processing all elements, count represents the length of the modified list, with each element appearing no more than twice.
+    Time and Space Complexity Analysis:
+    Time Complexity:
+
+The time complexity is 
+
+    O(n), where 
+    n is the number of elements in nums. This is because we make a single pass through the list, performing constant-time operations for each element.
+    Space Complexity:
+
+The space complexity is 
+    O(1) since the algorithm modifies the list in-place and only uses a few extra integer variables (count and dup). The amount of space used does not depend on the size of the input list.
             
